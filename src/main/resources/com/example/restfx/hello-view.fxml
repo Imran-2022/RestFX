@@ -12,6 +12,9 @@
   </padding>
 
   <Label fx:id="welcomeText"/>
-  <ListView fx:id="emailListView"/>
+  <ListView fx:id="userListView">
+    <!-- Other ListView configuration if any -->
+  </ListView>
+
   <Button text="Load Data" onAction="#onLoadDataButtonClick"/>
 </VBox>

@@ -1,25 +1,30 @@
 package com.example.restfx;
 
-import com.google.gson.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
 
 public class HelloController {
     @FXML
     private Label welcomeText;
 
     @FXML
-    private ListView<String> emailListView;
+    private ListView<String> userListView;
 
     private static final String API_URL = "http://localhost:8080/users";
 
@@ -27,8 +32,8 @@ public class HelloController {
     protected void onLoadDataButtonClick() {
         try {
             List<User> users = fetchDataFromAPI();
-            welcomeText.setText("Data loaded successfully!");
-            displayEmailAddresses(users);
+            welcomeText.setText("Data loaded successfully! Total data: " + users.size());
+            displayUserData(users);
         } catch (IOException e) {
             e.printStackTrace();
             welcomeText.setText("Error while fetching data!");
@@ -60,12 +65,11 @@ public class HelloController {
         }
     }
 
-
-
-    private void displayEmailAddresses(List<User> users) {
-        emailListView.getItems().clear();
+    private void displayUserData(List<User> users) {
+        userListView.getItems().clear();
         for (User user : users) {
-            emailListView.getItems().add(user.getEmail());
+            String userInfo = "ID: " + user.getId() + ", Name: " + user.getName() + ", Age: " + user.getAge() + ", Email: " + user.getEmail();
+            userListView.getItems().add(userInfo);
         }
     }
 }
