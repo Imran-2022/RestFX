@@ -48,7 +48,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
-- The RestFX application is developed as part of a sessional exam for [your course/subject name].
-- Special thanks to [instructor/teacher name] for the guidance and support.
+- The RestFX application is developed as part of a sessional exam for [ CSE 254 ].
+- Special thanks to [ChatGPT] for the guidance and support.
 
 Feel free to customize this README file according to your application's specific details.
